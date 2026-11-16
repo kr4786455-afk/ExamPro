@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExamPro | Online Examination</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Exam<span>Pro</span></div>
+    <div id="userArea"></div>
+  </header>
+
+  <main class="container">
+    <section id="authPanel" class="panel auth-grid">
+      <div>
+        <p class="eyebrow">ONLINE EXAMINATION SYSTEM</p>
+        <h1>Test your knowledge.<br><span>Track your progress.</span></h1>
+        <p class="muted">Sign in or create a student account to continue.</p>
+      </div>
+      <div class="auth-card">
+        <div class="tabs">
+          <button class="tab active" id="loginTab">Login</button>
+          <button class="tab" id="registerTab">Register</button>
+        </div>
+        <form id="authForm">
+          <div id="nameField" class="hidden">
+            <label>Name</label><input id="name" autocomplete="name" placeholder="Your name">
+          </div>
+          <label>Email</label><input id="email" type="email" required autocomplete="email" placeholder="name@example.com">
+          <label>Password</label><input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="At least 6 characters">
+          <button class="primary full" type="submit" id="authSubmit">Login</button>
+        </form>
+        <p id="authMessage" class="message"></p>
+      </div>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="section-head">
+        <div><p class="eyebrow">YOUR WORKSPACE</p><h1 id="welcomeTitle">Dashboard</h1></div>
+        <button class="secondary" id="refreshBtn">Refresh</button>
+      </div>
+
+      <section id="adminPanel" class="panel hidden">
+        <h2>Create an exam</h2>
+        <p class="muted">Add one question per block. Correct answers are stored on the server and hidden from students.</p>
+        <form id="createExamForm">
+          <div class="form-grid">
+            <div><label>Exam title</label><input id="examTitle" required placeholder="e.g. Computer Science Test"></div>
+            <div><label>Duration (minutes)</label><input id="duration" type="number" min="1" value="30" required></div>
+            <div><label>Total marks</label><input id="totalMarks" type="number" min="1" value="10" required></div>
+            <div><label>Description</label><input id="description" placeholder="Short description"></div>
+          </div>
+          <div id="questionEditor"></div>
+          <div class="button-row">
+            <button type="button" class="secondary" id="addQuestionBtn">+ Add question</button>
+            <button type="submit" class="primary">Create exam</button>
+          </div>
+        </form>
+        <p id="adminMessage" class="message"></p>
+        <h2 class="subhead">Manage exams</h2>
+        <div id="adminExams" class="list"></div>
+      </section>
+
+      <section id="studentPanel" class="hidden">
+        <div class="panel">
+          <h2>Available exams</h2>
+          <div id="examList" class="list"></div>
+        </div>
+        <div class="panel">
+          <h2>My results</h2>
+          <div id="myResults" class="list"></div>
+        </div>
+      </section>
+
+      <section id="attemptPanel" class="panel hidden">
+        <div class="attempt-head">
+          <div><p class="eyebrow">EXAM IN PROGRESS</p><h2 id="attemptTitle"></h2></div>
+          <div class="timer" id="timer">30:00</div>
+        </div>
+        <form id="attemptForm">
+          <div id="attemptQuestions"></div>
+          <button class="primary" type="submit">Submit exam</button>
+        </form>
+        <p id="attemptMessage" class="message"></p>
+      </section>
+
+      <section id="resultPanel" class="panel hidden">
+        <p class="eyebrow">EXAM RESULT</p>
+        <h2 id="resultTitle">Your result</h2>
+        <div id="resultDetails" class="result-grid"></div>
+        <button class="primary" id="backDashboard">Back to dashboard</button>
+      </section>
+    </section>
+  </main>
+
+  <footer>ExamPro · Online Examination System</footer>
+  <script src="app.js"></script>
+</body>
+</html>
